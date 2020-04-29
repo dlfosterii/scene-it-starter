@@ -14,3 +14,13 @@ body {
 	margin-top: 20px;
 }
 
+.movies-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+}
+.titleDate {
+	display: flex;
+	justify-content: space-between;
+}
+
