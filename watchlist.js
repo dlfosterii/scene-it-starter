@@ -1,4 +1,5 @@
 const movieContainer = document.getElementById('watchlist-container')
+const startOver = document.getElementById('reset')
 // const myForm = document.getElementById('search-form');
 
 
@@ -27,19 +28,24 @@ document.addEventListener('DOMContentLoaded', function () {
     
 });
 
-function saveToWatchlist(imdbID) {
-    console.log(imdbID);
-    const movie = movieData.find(function(currentMovie) {
-        return currentMovie.imdbID == imdbID;
-    });
-    let watchlistJSON = localStorage.getItem('watchlist');
-    let watchlist = JSON.parse(watchlistJSON);
-    if (watchlistJSON == null) {
-        watchlist = [];
-    }  
-    watchlist.push(movie);
-    watchlistJSON = JSON.stringify(watchlist);
-    localStorage.setItem('watchlist', watchlistJSON);
+document.addEventListener('click', function() {
+    localStorage.clear(startOver)
+})
+
+
+// function saveToWatchlist(imdbID) {
+//     console.log(imdbID);
+//     const movie = movieData.find(function(currentMovie) {
+//         return currentMovie.imdbID == imdbID;
+//     });
+//     let watchlistJSON = localStorage.getItem('watchlist');
+//     let watchlist = JSON.parse(watchlistJSON);
+//     if (watchlistJSON == null) {
+//         watchlist = [];
+//     }  
+//     watchlist.push(movie);
+//     watchlistJSON = JSON.stringify(watchlist);
+//     localStorage.setItem('watchlist', watchlistJSON);
     
 
-}
+// }
