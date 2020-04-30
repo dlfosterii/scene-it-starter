@@ -42,11 +42,11 @@ function saveToWatchlist(imdbID) {
     let watchlist = JSON.parse(watchlistJSON);
     if (watchlistJSON == null) {
         watchlist = [];
-    }   else {
-        watchlist.push(movie);
-        watchlistJSON = JSON.stringify(watchlist);
-        localStorage.setItem('watchlist', watchlistJSON);
-    }
+    }  
+    watchlist.push(movie);
+    watchlistJSON = JSON.stringify(watchlist);
+    localStorage.setItem('watchlist', watchlistJSON);
+    
 
 }
 
