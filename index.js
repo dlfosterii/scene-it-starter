@@ -20,35 +20,37 @@ function renderMovies(movieArray) {
     }
     )
     return movieHtmlArray.join('');
-}
+};
 
 document.addEventListener('DOMContentLoaded', function () {
     // code here will execute after the document is loaded
     myForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        movieContainer.innerHTML = renderMovies(movieData)
-
+        let searchString = document.getElementsByClassName('search-bar')[0].value;
+        let urlEncodedSearchString = encodeURIComponent(searchString);
+        console.log(urlEncodedSearchString)
+        axios.get(`http://www.omdbapi.com/?apikey=efe3c50b&s=${urlEncodedSearchString}`)
+        .then(function(response) {
+            let movieHTML = renderMovies(response.data.Search);
+            movieContainer.innerHTML = movieHTML;
+        })
     })
 }
-
 );
 
 function saveToWatchlist(imdbID) {
     console.log(imdbID);
-    const movie = movieData.find(function(currentMovie) {
-        return currentMovie.imdbID == imdbID;
-    });
-    let watchlistJSON = localStorage.getItem('watchlist');
-    let watchlist = JSON.parse(watchlistJSON);
-    if (watchlistJSON == null) {
-        watchlist = [];
-    }  
-    watchlist.push(movie);
-    watchlistJSON = JSON.stringify(watchlist);
-    localStorage.setItem('watchlist', watchlistJSON);
-    
-
-}
-
-
+    axios.get(`http://www.omdbapi.com/?apikey=efe3c50b&i=${imdbID}`)
+    .then(function(response) {
+        let movie = response.data;
+        let watchlistJSON = localStorage.getItem('watchlist');
+        let watchlist = JSON.parse(watchlistJSON);
+        if (watchlistJSON == null) {
+            watchlist = [];
+        }  
+        watchlist.push(movie);
+        watchlistJSON = JSON.stringify(watchlist);
+        localStorage.setItem('watchlist', watchlistJSON);
+    })
+};
 
