@@ -18,9 +18,16 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	align-content: space-between;
+	align-items: flex-end;
 }
+
+.button {
+	/* align-self: flex-end; */
+}
+
 .titleDate {
 	display: flex;
 	justify-content: space-between;
+	align-self: flex-end;
 }
 
