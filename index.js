@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let searchString = document.getElementsByClassName('search-bar')[0].value;
         let urlEncodedSearchString = encodeURIComponent(searchString);
         console.log(urlEncodedSearchString)
-        axios.get(`http://www.omdbapi.com/?apikey=efe3c50b&s=${urlEncodedSearchString}`)
+        axios.get(`https://www.omdbapi.com/?apikey=efe3c50b&s=${urlEncodedSearchString}`)
         .then(function(response) {
             let movieHTML = renderMovies(response.data.Search);
             movieContainer.innerHTML = movieHTML;
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function saveToWatchlist(imdbID) {
     console.log(imdbID);
-    axios.get(`http://www.omdbapi.com/?apikey=efe3c50b&i=${imdbID}`)
+    axios.get(`https://www.omdbapi.com/?apikey=efe3c50b&i=${imdbID}`)
     .then(function(response) {
         let movie = response.data;
         let watchlistJSON = localStorage.getItem('watchlist');
